@@ -9,4 +9,4 @@ const menuItemsSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('menuItems', menuItemsSchema, 'Menuitems');
+module.exports = mongoose.model('menuItems', menuItemsSchema, 'menuitems');

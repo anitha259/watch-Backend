@@ -6,7 +6,7 @@ exports.getLocation = (req, res) => {
             res.status(200).json(
                 {
                     message: "Location Fetched Successfully",
-                    locations: response
+                    location: response
                 })
         })
         .catch(err => {

@@ -3,7 +3,7 @@ const Brand = require('../Models/brand');
 exports.getBrandByLocation = (req, res) => {
     const locId = req.params.locId;
 
-    Brand.find({ location_id: locId })
+    Brand.findById(locId)
         .then(response => {
             res.status(200).json(
                 {
@@ -35,9 +35,8 @@ exports.brandFilter = (req, res) => {
     model && (filterObj['model_id'] = { $in: model });
     lcost && hcost && (filterObj['min_price'] = { $lte: hcost, $gte: lcost });
 
-    brand.find(filterObj).sort({ min_price: sort })
+    Brand.find(filterObj).sort({ min_price: sort })
         .then(response => {
-            console.log('resp', response);
             // Pagination Logic
 
             const paginatedResponse = response.slice(startIndex, endIndex);
@@ -63,7 +62,7 @@ exports.brandFilter = (req, res) => {
 exports.getBrandDetailsById = (req, res) => {
     const resId = req.params.resId;
 
-    brand.findById(resId)
+    Brand.findById(resId)
         .then(response => {
             res.status(200).json(
                 {
